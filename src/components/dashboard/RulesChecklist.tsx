@@ -111,30 +111,24 @@ export function RulesChecklist({ onAllRulesChecked }: RulesChecklistProps) {
   return (
     <Card>
       <CardHeader>
-        <div className="flex items-center justify-between">
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5 text-primary" />
-            My Trading Rules
+        <div className="flex items-center justify-between mb-4">
+          <CardTitle className="flex items-center gap-3">
+            <div className="p-2 rounded-xl bg-profit/10">
+              <Shield className="h-5 w-5 text-profit-light" />
+            </div>
+            <span className="text-lg">My Trading Rules</span>
           </CardTitle>
-          <div className="text-sm font-medium">
-            <span className={allChecked ? 'text-green-600' : 'text-muted-foreground'}>
+          <div className="text-sm font-semibold px-4 py-2 rounded-xl bg-white/5">
+            <span className={allChecked ? 'text-profit-light' : 'text-muted-foreground'}>
               {checkedRules.size}/{rules.length}
             </span>
           </div>
         </div>
-        <div className="mt-2 h-2 bg-muted rounded-full overflow-hidden">
-          <div
-            className={`h-full transition-all duration-300 ${
-              allChecked ? 'bg-green-500' : 'bg-primary'
-            }`}
-            style={{ width: `${progress}%` }}
-          />
-        </div>
       </CardHeader>
       <CardContent>
-        <div className="space-y-4">
+        <div className="space-y-3">
           {rules.map((rule, index) => (
-            <div key={rule.id} className="flex items-start gap-3">
+            <div key={rule.id} className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors">
               <Checkbox
                 id={`rule-${rule.id}`}
                 checked={checkedRules.has(rule.id)}
@@ -147,10 +141,10 @@ export function RulesChecklist({ onAllRulesChecked }: RulesChecklistProps) {
                 htmlFor={`rule-${rule.id}`}
                 className="flex-1 text-sm leading-relaxed cursor-pointer"
               >
-                <span className="font-medium text-primary mr-2">
+                <span className="font-semibold text-foreground mr-2">
                   {index + 1}.
                 </span>
-                {rule.rule_text}
+                <span className="text-foreground">{rule.rule_text}</span>
                 {rule.category && (
                   <span className="ml-2 text-xs text-muted-foreground">
                     ({rule.category})

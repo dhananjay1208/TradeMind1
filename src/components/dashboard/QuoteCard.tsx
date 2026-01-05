@@ -39,15 +39,15 @@ export function QuoteCard() {
 
   if (loading) {
     return (
-      <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10">
-        <CardContent className="p-6">
+      <Card className="bg-gradient-to-br from-profit/5 to-profit/10 border-profit/20">
+        <CardContent className="p-8">
           <div className="flex items-start gap-4">
-            <div className="p-3 rounded-full bg-primary/10">
-              <QuoteIcon className="h-6 w-6 text-primary" />
+            <div className="p-3 rounded-xl bg-profit/10">
+              <QuoteIcon className="h-6 w-6 text-profit-light" />
             </div>
-            <div className="flex-1 space-y-2">
-              <div className="h-4 bg-muted animate-pulse rounded" />
-              <div className="h-4 bg-muted animate-pulse rounded w-3/4" />
+            <div className="flex-1 space-y-3">
+              <div className="h-5 bg-white/10 animate-pulse rounded-lg" />
+              <div className="h-5 bg-white/10 animate-pulse rounded-lg w-3/4" />
             </div>
           </div>
         </CardContent>
@@ -57,10 +57,10 @@ export function QuoteCard() {
 
   if (!quote) {
     return (
-      <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10">
-        <CardContent className="p-6">
+      <Card className="bg-gradient-to-br from-profit/5 to-profit/10 border-profit/20">
+        <CardContent className="p-8">
           <div className="flex items-center gap-3">
-            <QuoteIcon className="h-6 w-6 text-primary" />
+            <QuoteIcon className="h-6 w-6 text-profit-light" />
             <p className="text-muted-foreground italic">No quote available</p>
           </div>
         </CardContent>
@@ -69,17 +69,17 @@ export function QuoteCard() {
   }
 
   return (
-    <Card className="border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 relative overflow-hidden">
-      <div className="absolute top-0 right-0 p-4 opacity-10">
-        <Sparkles className="h-24 w-24 text-primary" />
+    <Card className="bg-gradient-to-br from-profit/5 to-profit/10 border-profit/20 relative overflow-hidden group hover:from-profit/10 hover:to-profit/15 transition-all">
+      <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+        <Sparkles className="h-32 w-32 text-profit-light" />
       </div>
-      <CardContent className="p-6 relative z-10">
+      <CardContent className="p-8 relative z-10">
         <div className="flex items-start gap-4">
-          <div className="p-3 rounded-full bg-primary/10 shrink-0">
-            <QuoteIcon className="h-6 w-6 text-primary" />
+          <div className="p-3 rounded-xl bg-profit/15 shrink-0">
+            <QuoteIcon className="h-7 w-7 text-profit-light" />
           </div>
-          <div className="flex-1 space-y-3">
-            <blockquote className="text-lg font-medium leading-relaxed">
+          <div className="flex-1 space-y-4">
+            <blockquote className="text-xl font-semibold leading-relaxed text-foreground">
               "{quote.quote_text}"
             </blockquote>
             {quote.author && (
