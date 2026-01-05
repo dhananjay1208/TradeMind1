@@ -44,15 +44,17 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-6">
-          <Link href="/dashboard" className="flex items-center gap-2">
-            <Brain className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">TradeMind</span>
+    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-background/80 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-20 items-center justify-between">
+        <div className="flex items-center gap-8">
+          <Link href="/dashboard" className="flex items-center gap-3 group">
+            <div className="p-2 rounded-xl bg-gradient-to-br from-profit/20 to-profit/10 group-hover:from-profit/30 group-hover:to-profit/20 transition-all">
+              <Brain className="h-6 w-6 text-profit-light" />
+            </div>
+            <span className="text-2xl font-bold bg-gradient-to-r from-profit-light to-profit bg-clip-text text-transparent">TradeMind</span>
           </Link>
 
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-2">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = pathname === link.href;
@@ -60,10 +62,10 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all ${
                     isActive
-                      ? 'bg-primary text-primary-foreground'
-                      : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                      ? 'bg-profit/10 text-profit-light border border-profit/30'
+                      : 'text-muted-foreground hover:bg-white/5 hover:text-foreground border border-transparent'
                   }`}
                 >
                   <Icon className="h-4 w-4" />
@@ -79,21 +81,21 @@ export function Header() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-10 w-10 rounded-full">
-                <Avatar className="h-10 w-10">
-                  <AvatarFallback className="bg-primary text-primary-foreground">
+              <Button variant="ghost" className="relative h-12 w-12 rounded-xl hover:bg-white/5">
+                <Avatar className="h-12 w-12 rounded-xl">
+                  <AvatarFallback className="bg-gradient-to-br from-profit/20 to-profit/10 text-profit-light rounded-xl font-bold text-lg">
                     {getInitials(profile?.full_name || null)}
                   </AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end" forceMount>
-              <DropdownMenuLabel className="font-normal">
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">
+            <DropdownMenuContent className="w-64 bg-card/95 backdrop-blur-lg border-white/10" align="end" forceMount>
+              <DropdownMenuLabel className="font-normal p-4">
+                <div className="flex flex-col space-y-2">
+                  <p className="text-base font-semibold leading-none">
                     {profile?.full_name || 'User'}
                   </p>
-                  <p className="text-xs leading-none text-muted-foreground">
+                  <p className="text-sm leading-none text-muted-foreground">
                     Capital: {profile?.current_capital?.toLocaleString('en-IN', {
                       style: 'currency',
                       currency: 'INR',
@@ -102,15 +104,15 @@ export function Header() {
                   </p>
                 </div>
               </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem asChild>
+              <DropdownMenuSeparator className="bg-white/10" />
+              <DropdownMenuItem asChild className="cursor-pointer p-3">
                 <Link href="/settings">Settings</Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
+              <DropdownMenuItem asChild className="cursor-pointer p-3">
                 <Link href="/profile">Profile</Link>
               </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={handleSignOut} className="text-red-600">
+              <DropdownMenuSeparator className="bg-white/10" />
+              <DropdownMenuItem onClick={handleSignOut} className="text-loss-light cursor-pointer p-3">
                 Sign out
               </DropdownMenuItem>
             </DropdownMenuContent>

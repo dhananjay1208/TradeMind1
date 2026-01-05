@@ -28,39 +28,43 @@ export function TodayPnLCard({
 
   return (
     <Card
-      className={`border-2 ${
+      className={`relative overflow-hidden ${
         isProfit
-          ? 'border-green-500 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950 dark:to-green-900'
+          ? 'profit-glow border-profit/30'
           : pnl < 0
-          ? 'border-red-500 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950 dark:to-red-900'
-          : 'border-muted'
+          ? 'loss-glow border-loss/30'
+          : ''
       }`}
     >
-      <CardContent className="p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-muted-foreground">
+      <CardContent className="p-6 sm:p-8">
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
             Today's Performance
           </h3>
-          {isProfit ? (
-            <TrendingUp className="h-6 w-6 text-green-600 dark:text-green-400" />
-          ) : pnl < 0 ? (
-            <TrendingDown className="h-6 w-6 text-red-600 dark:text-red-400" />
-          ) : (
-            <Activity className="h-6 w-6 text-muted-foreground" />
-          )}
+          <div className={`p-2 rounded-xl ${
+            isProfit ? 'bg-profit/10' : pnl < 0 ? 'bg-loss/10' : 'bg-muted/10'
+          }`}>
+            {isProfit ? (
+              <TrendingUp className="h-5 w-5 text-profit-light" />
+            ) : pnl < 0 ? (
+              <TrendingDown className="h-5 w-5 text-loss-light" />
+            ) : (
+              <Activity className="h-5 w-5 text-muted-foreground" />
+            )}
+          </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           <div>
-            <p className="text-sm font-medium text-muted-foreground mb-1">
+            <p className="text-xs font-medium text-muted-foreground mb-2 uppercase tracking-wide">
               Profit & Loss
             </p>
             <p
-              className={`text-4xl font-bold ${
+              className={`text-5xl font-bold tracking-tight ${
                 isProfit
-                  ? 'text-green-700 dark:text-green-300'
+                  ? 'text-profit-light'
                   : pnl < 0
-                  ? 'text-red-700 dark:text-red-300'
+                  ? 'text-loss-light'
                   : 'text-foreground'
               }`}
             >
@@ -68,11 +72,11 @@ export function TodayPnLCard({
               {formatCurrency(pnl)}
             </p>
             <p
-              className={`text-sm font-medium mt-1 ${
+              className={`text-sm font-semibold mt-2 ${
                 isProfit
-                  ? 'text-green-600 dark:text-green-400'
+                  ? 'text-profit'
                   : pnl < 0
-                  ? 'text-red-600 dark:text-red-400'
+                  ? 'text-loss'
                   : 'text-muted-foreground'
               }`}
             >
@@ -80,40 +84,40 @@ export function TodayPnLCard({
             </p>
           </div>
 
-          <div className="grid grid-cols-3 gap-4 pt-4 border-t">
-            <div>
-              <p className="text-xs text-muted-foreground mb-1">Total Trades</p>
-              <p className="text-xl font-bold">{trades}</p>
+          <div className="grid grid-cols-3 gap-6 pt-6 border-t border-white/10">
+            <div className="text-center">
+              <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wide">Trades</p>
+              <p className="text-2xl font-bold">{trades}</p>
             </div>
-            <div>
-              <p className="text-xs text-green-600 dark:text-green-400 mb-1">
-                Winning
+            <div className="text-center">
+              <p className="text-xs text-profit mb-2 uppercase tracking-wide">
+                Won
               </p>
-              <p className="text-xl font-bold text-green-700 dark:text-green-300">
+              <p className="text-2xl font-bold text-profit-light">
                 {winningTrades}
               </p>
             </div>
-            <div>
-              <p className="text-xs text-red-600 dark:text-red-400 mb-1">
-                Losing
+            <div className="text-center">
+              <p className="text-xs text-loss mb-2 uppercase tracking-wide">
+                Lost
               </p>
-              <p className="text-xl font-bold text-red-700 dark:text-red-300">
+              <p className="text-2xl font-bold text-loss-light">
                 {losingTrades}
               </p>
             </div>
           </div>
 
           {trades > 0 && (
-            <div className="pt-4 border-t">
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-muted-foreground">
+            <div className="pt-6 border-t border-white/10">
+              <div className="flex items-center justify-between mb-3">
+                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                   Hit Ratio
                 </p>
-                <p className="text-lg font-bold">{hitRatio.toFixed(1)}%</p>
+                <p className="text-xl font-bold text-profit-light">{hitRatio.toFixed(1)}%</p>
               </div>
-              <div className="mt-2 h-2 bg-muted rounded-full overflow-hidden">
+              <div className="h-3 bg-white/5 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-green-500 transition-all duration-300"
+                  className="h-full bg-gradient-to-r from-profit to-profit-light transition-all duration-500 rounded-full"
                   style={{ width: `${hitRatio}%` }}
                 />
               </div>

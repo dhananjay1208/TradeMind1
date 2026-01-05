@@ -47,47 +47,51 @@ export function RiskMeter({ currentLoss, maxDailyLoss, profile }: RiskMeterProps
   };
 
   return (
-    <Card className={zone === 'stop' ? 'border-red-500 border-2' : ''}>
+    <Card className={zone === 'stop' ? 'loss-glow border-loss/50' : ''}>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2">
-          {zone === 'stop' ? (
-            <AlertTriangle className="h-5 w-5 text-red-600" />
-          ) : (
-            <Shield className="h-5 w-5 text-primary" />
-          )}
-          Risk Usage Meter
+        <CardTitle className="flex items-center gap-3">
+          <div className={`p-2 rounded-xl ${
+            zone === 'stop' ? 'bg-loss/20' : 'bg-profit/10'
+          }`}>
+            {zone === 'stop' ? (
+              <AlertTriangle className="h-5 w-5 text-loss-light" />
+            ) : (
+              <Shield className="h-5 w-5 text-profit-light" />
+            )}
+          </div>
+          <span className="text-lg">Risk Usage Meter</span>
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-6">
         <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium">{getZoneLabel()}</span>
-            <span className="text-sm font-bold">{percentage.toFixed(1)}%</span>
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-xs uppercase tracking-wide font-medium text-muted-foreground">{getZoneLabel()}</span>
+            <span className="text-2xl font-bold">{percentage.toFixed(1)}%</span>
           </div>
 
-          <div className="h-8 bg-muted rounded-full overflow-hidden relative">
+          <div className="h-4 bg-white/5 rounded-full overflow-hidden relative">
             <div
               className={`h-full transition-all duration-500 ${
                 zone === 'safe'
-                  ? 'bg-green-500'
+                  ? 'bg-gradient-to-r from-profit to-profit-light'
                   : zone === 'caution'
-                  ? 'bg-yellow-500'
+                  ? 'bg-gradient-to-r from-yellow-500 to-yellow-400'
                   : zone === 'danger'
-                  ? 'bg-red-500'
-                  : 'bg-red-900'
+                  ? 'bg-gradient-to-r from-orange-500 to-orange-400'
+                  : 'bg-gradient-to-r from-loss-dark to-loss'
               }`}
               style={{ width: `${Math.min(percentage, 100)}%` }}
             />
 
             {/* Zone markers */}
             <div className="absolute inset-0 flex">
-              <div className="w-[50%] border-r border-white/50" />
-              <div className="w-[25%] border-r border-white/50" />
+              <div className="w-[50%] border-r border-white/20" />
+              <div className="w-[25%] border-r border-white/20" />
               <div className="w-[25%]" />
             </div>
           </div>
 
-          <div className="flex justify-between text-xs text-muted-foreground mt-1">
+          <div className="flex justify-between text-xs text-muted-foreground mt-2">
             <span>0%</span>
             <span>50%</span>
             <span>75%</span>
@@ -95,41 +99,41 @@ export function RiskMeter({ currentLoss, maxDailyLoss, profile }: RiskMeterProps
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-xs text-muted-foreground mb-1">Used Risk</p>
-            <p className="text-lg font-bold text-red-600 dark:text-red-400">
+        <div className="grid grid-cols-2 gap-6">
+          <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+            <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wide">Used Risk</p>
+            <p className="text-2xl font-bold text-loss-light">
               {formatCurrency(usedRisk)}
             </p>
           </div>
-          <div>
-            <p className="text-xs text-muted-foreground mb-1">Remaining</p>
-            <p className="text-lg font-bold text-green-600 dark:text-green-400">
+          <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+            <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wide">Remaining</p>
+            <p className="text-2xl font-bold text-profit-light">
               {formatCurrency(Math.max(0, maxDailyLoss - usedRisk))}
             </p>
           </div>
         </div>
 
         <div
-          className={`p-3 rounded-lg ${
+          className={`p-4 rounded-xl border ${
             zone === 'safe'
-              ? 'bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-900'
+              ? 'bg-profit/10 border-profit/30'
               : zone === 'caution'
-              ? 'bg-yellow-50 dark:bg-yellow-950/30 border border-yellow-200 dark:border-yellow-900'
+              ? 'bg-yellow-500/10 border-yellow-500/30'
               : zone === 'danger'
-              ? 'bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-900'
-              : 'bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-900'
+              ? 'bg-orange-500/10 border-orange-500/30'
+              : 'bg-loss/10 border-loss/30'
           }`}
         >
           <p
             className={`text-sm font-medium ${
               zone === 'safe'
-                ? 'text-green-900 dark:text-green-100'
+                ? 'text-profit-light'
                 : zone === 'caution'
-                ? 'text-yellow-900 dark:text-yellow-100'
+                ? 'text-yellow-400'
                 : zone === 'danger'
-                ? 'text-orange-900 dark:text-orange-100'
-                : 'text-red-900 dark:text-red-100'
+                ? 'text-orange-400'
+                : 'text-loss-light'
             }`}
           >
             {getZoneMessage()}
