@@ -12,6 +12,8 @@ import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Save, User, Shield, Target, BookOpen, Lock } from 'lucide-react';
 import { TradingRule } from '@/components/onboarding/TradingRulesStep';
+import { Header } from '@/components/layout/Header';
+import { MobileNav } from '@/components/layout/MobileNav';
 
 interface TradingRuleDB {
   id: string;
@@ -420,15 +422,17 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="container mx-auto py-8 px-4 max-w-5xl">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Settings</h1>
-        <p className="text-muted-foreground">
-          Manage your profile, risk limits, trading rules, and account security
-        </p>
-      </div>
+    <div className="min-h-screen bg-background pb-20 md:pb-8">
+      <Header />
+      <div className="container mx-auto py-8 px-4 max-w-5xl">
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold mb-2">Settings</h1>
+          <p className="text-muted-foreground">
+            Manage your profile, risk limits, trading rules, and account security
+          </p>
+        </div>
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
         <TabsList className="grid w-full grid-cols-5 lg:w-auto lg:inline-grid">
           <TabsTrigger value="profile" className="gap-2">
             <User className="h-4 w-4" />
@@ -743,6 +747,8 @@ export default function SettingsPage() {
           </Card>
         </TabsContent>
       </Tabs>
+      </div>
+      <MobileNav />
     </div>
   );
 }
