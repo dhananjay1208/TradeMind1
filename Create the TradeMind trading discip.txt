@@ -1,0 +1,19 @@
+Create the TradeMind trading discipline app using the specification in trademind-spec.md. 
+
+Start with Phase 1 MVP:
+1. Set up Next.js 14 with TypeScript, Tailwind CSS, and shadcn/ui
+2. Configure Supabase authentication
+3. Create the onboarding flow
+4. Build the Daily Discipline Ritual (home screen)
+5. Create manual trade entry form
+6. Build the monthly calendar view with P&L cards
+7. Implement basic statistics dashboard
+8. Add settings page with rule management
+
+Use these environment variables:
+NEXT_PUBLIC_SUPABASE_URL=https://hjibkptyxbjnkyzoavtl.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhqaWJrcHR5eGJqbmt5em9hdnRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjEzOTk0NTQsImV4cCI6MjA3Njk3NTQ1NH0.7NbuwSJdE84WLyTSeOGgpGtO6MpC4ZlaU8bLc9hWIHM
+
+The supabase db tables have been created.
+
+Make it mobile-responsive with dark/light theme toggle.

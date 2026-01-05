@@ -1,0 +1,42 @@
+Hello hey Claude! I am a stock market trader. I do intraday trading in the stock market in India. You know that trading is a very difficult profession and you need to be very disciplined when it comes to execution in the trading.
+
+I want to create an app which will help me to remain disciplined and avoid blunders and keep me conscious when I am trading. So as part of that I want to develop an application where this application will help me in my trading journey in terms of making me conscious and aware of my discipline and risk management principles, make me conscious of my daily limits in terms of risk.
+
+Every day when I open this app it should remind me of the focus, discipline, emotions, control that is needed while trading. Also this app should give me a provision interface where I can log my performance of the trading in terms of the daily profit, daily loss and any learnings I want to record. It should also show me a dashboard where my daily performance is highlighted as a card (green or red) if there's a profit or loss. And it should help me to track the complete month in terms of the display as cards.
+
+So this is just starting thoughts so I want your help to plan this application which will help me to be a disciplined trader and remain consistent in my trading. 
+
+hey Claude! I am a stock market trader. I do intraday trading in the stock market in India. You know that trading is a very difficult profession and you need to be very disciplined when it comes to execution in the trading.
+I want to create an app which will help me to remain disciplined and avoid blunders and keep me conscious when I am trading. So as part of that I want to develop an application where this application will help me in my trading journey in terms of making me conscious and aware of my discipline and risk management principles, make me conscious of my daily limits in terms of risk.
+Every day when I open this app it should remind me of the focus, discipline, emotions, control that is needed while trading. Also this app should give me a provision interface where I can log my performance of the trading in terms of the daily profit, daily loss and any learnings I want to record. It should also show me a dashboard where my daily performance is highlighted as a card (green or red) if there's a profit or loss. And it should help me to track the complete month in terms of the display as cards.
+So this is just starting thoughts so I want your help to plan this application which will help me to be a disciplined trader and remain consistent in my trading.
+
+Daily Limits: What specific limits do you want to track? (e.g., max loss per day, max number of trades, max loss per trade)
+max loss per day, max loss per trade
+
+Trading Rules: What are your top 5-7 discipline rules you want reminded of daily?
+risk management, adherence to stop loss, position sizing, profit booking agility, do no let a profitable trade to turn into loss, be patient with entry - dont jump on trade, profit target for day,week and month
+
+Data You Track: Besides P&L, what else? (Trades taken, win rate, sectors traded, time of day patterns?)
+P&L, hit ratio, max profit, max loss, avg profit, avg loss , roi
+
+
+Accountability Features: Would you want:
+
+Weekly/monthly review prompts?
+Graphs showing performance trends?
+Export to analyze in Excel?
+Goal setting (monthly targets)?
+
+Yes all of them ( goal setting, daily, weekly, monthly)
+
+
+Platform: Web app (accessible from phone/desktop) or mobile app preference?
+web app (accessible from mobile and desktop)
+
+
+Trading Journal Integration: Do you want to attach screenshots or detailed trade logs, or keep it high-level?
+Yes. Should have provision where is i upload screenshot of my order log or position log, it should automatically create entry
+
+
+I use zerodha and groww platforms...also i need a prominent card for each day profit or loss as a monthly page which gives me view of how my month is going....lets use supabase as db...lets plan and get claude code to create this app...in the next phase i also need automation where we can use api from zerodha and set our entry and exit conditions from the app and it should automatically get executed in the broker app
